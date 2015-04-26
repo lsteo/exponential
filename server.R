@@ -75,16 +75,7 @@ shinyServer (
                         paste('Theoretical Variance: Var[X] = ', 1/isolate(input$in.lambda)^2, sep='')
                 })
                 
-                output$out.lambda <- renderText({
-                        input$startButton
-                        isolate(input$in.lambda)
-                })
-                
-                output$out.times <- renderText({
-                        input$startButton
-                        isolate(input$in.times)
-                })
-                
+                ## generate column plot for 2 plots - distribution of mean and variance
                 output$plot <- renderPlot({
                         mean.g <- ggplot(result(), aes(x=mean.s)) +
                                 geom_histogram(alpha = .20, binwidth=0.2, color = "black", fill = "blue", aes(y = ..density..)) +
